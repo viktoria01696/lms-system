@@ -1,0 +1,125 @@
+﻿body{
+    margin: 0;
+    line-height: 1.6;
+    font-family: 'Caveat', cursive;
+}
+
+*,
+*:after,
+*:before{
+    box-sizing: border-box;
+}
+
+.main-theme{
+    width: 100%;
+    height: 100vh;
+    background: url("../images/main-theme.jpg") center no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    z-index: -2;
+}
+h1{
+    text-align: center;
+    font-size: 100px;
+    color:black;
+    padding: 0 0 0 20px;
+    position: relative;
+    top:20px;
+    margin: 0;
+}
+h2{
+    font-size: 30px;
+    color:black;
+    position: relative;
+    margin: 0;
+}
+
+.main-part{
+    width: 1200px;
+    height: 100%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+
+.form{
+    position: relative;
+    width: 100%;
+    height: 250px;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px #ccc;
+    margin-bottom: 20px;
+    top: 10px;
+    letter-spacing: 1px;
+}
+
+
+.form_input-name{
+    font-family: 'Caveat', cursive;
+    letter-spacing: 1px;
+    font-size: 30px;
+    color: black;
+    width: 100%;
+    padding: 0 0 10px 0;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: transparent;
+    outline: none;
+}
+.form_button{
+    letter-spacing: 1px;
+    font-size: 23px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #0071f0;
+    outline:none;
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
+    position: absolute;
+    bottom: 10px;
+    left: 30px;
+}
+
+.helper{
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+.file-upload input[type="file"]{
+    display: none;
+}
+.file-upload {
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+    height: 40px;
+    background: #0071f0;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+
+}
+.file-upload:hover {
+    background: #1E90FF;
+}
+.file-upload label {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.file-upload span {
+    line-height: 40px;
+    font-weight:bold;
+    letter-spacing: 1px;
+    font-size: 25px;
+}
