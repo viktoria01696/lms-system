@@ -1,18 +1,18 @@
 package com.example.demo.dao;
 
 import com.example.demo.domain.Course;
-
 import java.util.List;
 import java.util.Optional;
 
 public interface CourseRepository {
-    List<Course> findAll();
 
-    Optional<Course> findById(long id);
+  List<Course> findAll();
 
-    void save(Course course);
+  Optional<Course> findById(long id);
 
-    void delete(long id);
+  void save(Course course);
 
-    List<Course> findByTitleWithPrefix(String prefix);
+  void delete(long id);
+
+  List<Course> findByTitleWithPrefix(String prefix);
 }

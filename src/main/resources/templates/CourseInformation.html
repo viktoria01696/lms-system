@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/CourseInformation.css}">
+  <title>course information</title>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Staatliches&family=Teko:wght@500&display=swap"
+      rel="stylesheet">
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<div class="new-course">
+  <a th:href="@{/course/new}">New course</a>
+</div>
+
+<div class="main-theme">
+  <div class="main-part">
+    <h1> Информация о курсе </h1>
+    <form th:object="${course}" th:method="post" th:action="@{/course}">
+      <input type="hidden" th:field="*{id}">
+      <div class="form_group">
+        <div>
+          <label class="label1" for="title">Название курса:</label>
+          <input class="form_input-name" placeholder="Введите название курса" type="text" id="title" th:field="*{title}">
+          <small class="validation-error-title" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></small>
+        </div>
+        <div>
+          <label class="label2" for="author">Автор:</label>
+          <input class="form_input-author" placeholder="Введите автора курса" type="text" id="author" th:field="*{author}">
+          <small class="validation-error-author" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></small>
+        </div>
+        <div>
+          <button class="form_button" type="submit">Сохранить</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+
+</html>

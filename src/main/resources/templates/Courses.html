@@ -1,51 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <link rel = "stylesheet" href="assets/css/courses.css">
-    <title>courses</title>
-   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Staatliches&family=Teko:wght@500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/Courses.css}">
+  <title>courses</title>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Staatliches&family=Teko:wght@500&display=swap"
+      rel="stylesheet">
 </head>
 <body>
+<header th:replace="fragments/header :: header"></header>
+<div class="new-course">
+  <a th:href="@{course/new}">New course</a>
+</div>
 
 <div class="main-theme">
-    <div class="main-part">
-      <h1> Курсы </h1>
-       <form class="form">
-           <div class="form_group">
-               <input class="form_input-name" placeholder="Введите название курса">
-           </div>
-       </form> 
-       <button class="form_button">Поиск</button>
-       <table class="first-table">
-            <tr>
-                <td>Id</td>
-                <td>Название</td>
-                <td>Автор</td>
-                <td>Назначить/удалить</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Course name</td>
-                <td>Course author</td>
-                <td> </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Course name</td>
-                <td>Course author</td>
-                <td>  </td>
-            </tr>
-            <tr>
-                <td>No data</td>
-                <td> </td>
-                <td> </td>
-                <td> </td>
-            </tr>
-        </table>
-        <button class="form_button_delete">Удалить</button>    
-        <button class="form_button_set">Назначить</button> 
-    </div> 
-</div>    
+  <div class="main-part">
+    <h1> Курсы </h1>
+    <form>
+      <input type="text" id="titlePrefix" class="form_input-name" name="titlePrefix"
+             placeholder="Введите название курса" th:value="${param.titlePrefix}"/>
+      <button class="form_button">Поиск</button>
+    </form>
+    <table class="first-table">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="course : ${courses}">
+        <td th:text="${course.id}">1</td>
+        <td>
+          <a th:text="${course.title}" th:href="@{/course/{id}(id = ${course.id})}">Course name</a>
+        </td>
+        <td th:text="${course.author}">Course author</td>
+        <td>
+          <form th:method="delete" th:action="@{/course/{id}(id = ${course.id})}">
+            <button class="form_button_delete" type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 </body>
 </html>

@@ -22,8 +22,24 @@ body{
     bottom: 0;
 }
 h1{
-    font-size: 150px;
-    color:red;
-    margin: 0;
+    font-size:50px;
+    color:black;
+    position: relative;
+    top:50px;
 }
-
+header {
+    position: absolute;
+    word-spacing: 20px;
+    left:30px;
+    top:0px;
+    font-size:40px;
+    min-width: 150px;
+}
+.new-course {
+    position: absolute;
+    word-spacing: 15px;
+    left:250px;
+    top:0px;
+    font-size:40px;
+    min-width: 150px;
+}

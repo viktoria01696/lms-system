@@ -13,7 +13,7 @@ body{
 .main-theme{
     width: 100%;
     height: 100vh;
-    background: url("../images/main-theme.jpg") center no-repeat;
+    background: url("main-theme.jpg") center no-repeat;
     background-size: cover;
     margin: 0 auto;
     z-index: -2;
@@ -37,36 +37,19 @@ h1{
     right: 0;
     z-index: 0;
 }
-.form{
-    position: absolute;
-    top: 10px;
-    width: 100%;
-    height: 700px;
-    padding: 32px;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px #ccc;
-    background-color:white;
-    opacity: 0.3;
-    letter-spacing: 1px;
-}
 .form_input-name{
     font-family: 'Caveat', cursive;
     letter-spacing: 1px;
-    font-size: 30px; 
+    font-size: 30px;
     color: black;
     position: absolute;
     top:150px;
-}
-.form_group{
-    position: relative;
-    margin-bottom: 0px;
 }
 .form_label{
     position: absolute;
     left:0;
     top: 0;
     z-index: -1;
-    color: white;
     transition: 0.3s;
 }
 .form_input-name{
@@ -77,44 +60,41 @@ h1{
     background-color: transparent;
     outline: none;
 }
-.form_button,
-.form_button_delete,
-.form_button_set{
+.form_button {
+    top: 220px;
+    right:100px;
     letter-spacing: 1px;
-    font-size: 23px; 
+    font-size: 23px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     color: white;
-    background-color: #0071f0;
+    background-color:#4698f1;
     outline:none;
     cursor: pointer;
     font-family: 'Caveat', cursive;
     position: absolute;
+    z-index:50;
 }
-.form_button{
-    top: 270px;
-    right:100px;
+.form_button_delete {
+     letter-spacing: 1px;
+     font-size: 23px;
+     border: none;
+     border-radius: 5px;
+     color: white;
+     background-color: #0071f0;
+     outline:none;
+     cursor: pointer;
+     font-family: 'Caveat', cursive;
 }
-.form_button_delete{
-    top: 440px;
-    right:190px;
-    z-index: 20;
-}
-.form_button_set{
-    top: 510px;
-    right:180px;
-    z-index: 20;
-}
-
 .first-table {
     width: 1100px;
-    position: absolute; 
+    position: absolute;
     left: 50px;
-    margin: 0; 
+    margin: 0;
     border-collapse: collapse;
     border: 2px solid white;
-    font-size:30px; 
+    font-size:30px;
     color:black;
     background: #CCCCFF;
     opacity: 0.7;
@@ -124,8 +104,23 @@ h1{
 }
 td {
     border: 2px white solid;
-    padding: 0.4em; 
+    padding: 0.4em;
 }
 tr{
     height: 70px;
+}
+header {
+    position: absolute;
+    word-spacing: 20px;
+    left:30px;
+    font-size:40px;
+    min-width: 150px;
+}
+.new-course {
+    position: absolute;
+    word-spacing: 15px;
+    left:250px;
+    top:0px;
+    font-size:40px;
+    min-width: 150px;
 }
