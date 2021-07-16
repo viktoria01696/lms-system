@@ -13,7 +13,7 @@ body{
 .main-theme{
     width: 100%;
     height: 100vh;
-    background: url("main-theme.jpg") center no-repeat;
+    background: url("../images/main-theme.jpg") center no-repeat;
     background-size: cover;
     margin: 0 auto;
     z-index: -2;
