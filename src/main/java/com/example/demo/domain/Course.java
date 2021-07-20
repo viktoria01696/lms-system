@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import com.example.demo.annotations.TitleCase;
 import javax.validation.constraints.NotBlank;
 
 public class Course {
@@ -8,6 +9,7 @@ public class Course {
   @NotBlank(message = "Автор курса должен быть указан!")
   private String author;
   @NotBlank(message = "Название курса должно быть заполнено!")
+  @TitleCase(message = "Название курса некорректно!")
   private String title;
 
   public Course() {

@@ -52,10 +52,10 @@ h1{
     outline: none;
 }
 .form_input-name{
-    top:250px;
+    top:150px;
 }
 .form_input-author{
-    top:150px;
+    top:250px;
 }
 .form_group{
     position: relative;
