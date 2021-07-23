@@ -76,7 +76,8 @@ h1{
     position: absolute;
     z-index:50;
 }
-.form_button_delete {
+.form_button_delete,
+.form_button_assign{
      letter-spacing: 1px;
      font-size: 23px;
      border: none;

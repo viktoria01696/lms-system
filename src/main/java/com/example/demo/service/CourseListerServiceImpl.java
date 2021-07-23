@@ -28,7 +28,7 @@ public class CourseListerServiceImpl implements CourseListerService {
 
   @Override
   public List<Course> coursesByPrefix(String prefix) {
-    return courseRepository.findByTitleWithPrefix(prefix == null ? "" : prefix);
+    return courseRepository.findByTitleLike(prefix == null ? ""+"%":prefix+"%");
   }
 
   @Override
@@ -43,12 +43,12 @@ public class CourseListerServiceImpl implements CourseListerService {
   }
 
   @Override
-  public Course createCourse() {
-    return new Course();
+  public void deleteCourse(Long id) {
+    courseRepository.deleteById(id);
   }
 
   @Override
-  public void deleteCourse(Long id) {
-    courseRepository.delete(id);
+  public Course getOneById(Long id) {
+    return courseRepository.getOne(id);
   }
 }

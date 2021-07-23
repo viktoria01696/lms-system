@@ -1,24 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="assets/css/AssignCourse.css">
+  <link rel="stylesheet" th:href="@{/AssignCourse.css}">
   <title>assign course</title>
   <link
       href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Staatliches&family=Teko:wght@500&display=swap"
       rel="stylesheet">
 </head>
 <body>
+<header th:replace="fragments/header :: header"></header>
+<div class="new-course">
+  <a th:href="@{/course/new}">New course</a>
+</div>
 
 <div class="main-theme">
   <div class="main-part">
-    <h1> Назначить курс </h1>
-    <form class="form">
+    <h1> Назначить на курс </h1>
+    <form th:method="post" th:action="@{/course/{courseId}/assign(courseId = ${courseId})}">
       <div class="form_group">
-        <input class="form_input-name" placeholder="Введите имя пользователя">
+        <label for="userId">Пользователь:</label>
+        <select id="userId" name="userId">
+        <option th:each="user : ${users}"
+                  th:value="${user.id}"
+                  th:text="${user.username}">Username</option>
+        </select>
+      </div>
+      <div>
+        <button class="form_button" type="submit">Assign</button>
       </div>
     </form>
-    <button class="form_button">Назначить</button>
   </div>
 </div>
 </body>

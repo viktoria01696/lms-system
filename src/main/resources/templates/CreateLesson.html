@@ -1,28 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="assets/css/CreateLesson.css">
+  <link rel="stylesheet" th:href="@{/CreateLesson.css}">
   <title>create lesson</title>
   <link
       href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Staatliches&family=Teko:wght@500&display=swap"
       rel="stylesheet">
 </head>
 <body>
+<header th:replace="fragments/header :: header"></header>
+<div class="new-course">
+  <a th:href="@{/course/new}">New course</a>
+</div>
 
 <div class="main-theme">
   <div class="main-part">
     <h1> Создать урок </h1>
-    <form class="form">
+    <h2> Название: </h2>
+    <h3> Содержание: </h3>
+    <form th:object="${lessonDto}" th:method="post" th:action="@{/lesson}">
+      <input type="hidden" th:field="*{id}">
+      <input type="hidden" th:field="*{courseId}">
+
       <div class="form_group">
-        <input class="form_input-name" placeholder="Введите название урока">
+        <input class="form_input-name" placeholder="Введите название урока" type="text" id="title" th:field="*{title}">
+        <small class="validation-error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title shouldn't be
+          empty</small>
+
+      <div class="help_text">
+        <textarea placeholder="Введите описание урока..." name="opinion"  id="text" rows="20" cols="30" th:field="*{text}"></textarea>
+        <small class="validation-error" th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Text shouldn't be
+          empty</small>
+      </div>
+      </div>
+      <div>
+        <button class="form_button" type="submit">Create</button>
       </div>
     </form>
-    <div class="help_text">
-      <textarea name="opinion"></textarea>
-    </div>
-    <h2>Опишите содержание урока:</h2>
-    <button class="form_button">Создать</button>
   </div>
 </div>
 </body>

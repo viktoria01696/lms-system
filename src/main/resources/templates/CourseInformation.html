@@ -35,7 +35,73 @@
         </div>
       </div>
     </form>
+    <div class="lesson-user">
+      <div th:unless="${lessons == null}">
+        <h2>Список уроков</h2>
+        <table class = "lesson-table">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:unless="${lessons.empty}" th:each="lesson : ${lessons}">
+            <td th:text="${lesson.id}">1</td>
+            <td>
+              <a th:text="${lesson.title}" th:href="@{/lesson/{id}(id = ${lesson.id})}">Lesson title</a>
+            </td>
+            <td>
+              <form th:method="delete" th:action="@{/lesson/{id}(id = ${lesson.id})}">
+                <button class="form_button_delete" type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <tr th:if="${lessons.empty}" >
+            <td colspan="4">Уроки не добавлены</td>
+          </tr>
+          </tbody>
+        </table>
+        <div>
+          <a class ="new-lesson" th:href="@{/lesson/new(course_id = ${course.id})}">New lesson</a>
+        </div>
+      </div>
+
+    <div th:unless="${users == null}">
+      <h3>Список участников</h3>
+      <table class="user-table">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Username</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:unless="${users.empty}" th:each="user : ${users}">
+          <td th:text="${user.id}">1</td>
+          <td>
+            <a th:text="${user.username}">Username</a>
+          </td>
+          <td>
+            <form th:method="delete" th:action="@{/course/{courseId}/user/{id}(courseId = ${course.id}, id = ${user.id})}">
+              <button class="form_button_delete" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <tr th:if="${users.empty}" >
+          <td colspan="4">Пользователи не добавлены</td>
+        </tr>
+        </tbody>
+      </table>
+      <div>
+        <a class ="new-user" th:href="@{/course/{id}/assign(id = ${course.id})}">New user</a>
+      </div>
+    </div>
   </div>
+  </div>
+</div>
 </div>
 </body>
 

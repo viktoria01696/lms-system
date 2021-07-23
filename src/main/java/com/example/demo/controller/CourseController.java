@@ -1,10 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Course;
+import com.example.demo.domain.User;
 import com.example.demo.service.CourseListerService;
+import com.example.demo.service.LessonListerService;
+import com.example.demo.service.UserListerService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,10 +23,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CourseController {
 
   private final CourseListerService courseListerService;
+  private final UserListerService userListerService;
+  private final LessonListerService lessonListerService;
 
   @Autowired
-  public CourseController(CourseListerService courseListerService) {
+  public CourseController(CourseListerService courseListerService, UserListerService userListerService,
+      LessonListerService lessonListerService) {
     this.courseListerService = courseListerService;
+    this.userListerService = userListerService;
+    this.lessonListerService = lessonListerService;
   }
 
   @GetMapping
@@ -34,9 +43,12 @@ public class CourseController {
   }
 
   @GetMapping("/{id}")
+  @Transactional
   public String courseForm(Model model, @PathVariable("id") Long id) {
     model.addAttribute("activePage", "courses");
     model.addAttribute("course", courseListerService.coursesById(id));
+    model.addAttribute("lessons", lessonListerService.getLessonsDto(id));
+    model.addAttribute("users", courseListerService.coursesById(id).getUsers());
     return "CourseInformation";
   }
 
@@ -52,7 +64,7 @@ public class CourseController {
   @GetMapping("/new")
   public String courseForm(Model model) {
     model.addAttribute("activePage", "courses");
-    model.addAttribute("course", courseListerService.createCourse());
+    model.addAttribute("course", new Course());
     return "CourseInformation";
   }
 
@@ -60,6 +72,35 @@ public class CourseController {
   public String deleteCourse(@PathVariable("id") Long id) {
     courseListerService.deleteCourse(id);
     return "redirect:/course";
+  }
+
+  @GetMapping("/{id}/assign")
+  public String assignCourse(Model model, @PathVariable("id") Long id) {
+    model.addAttribute("activePage", "courses");
+    model.addAttribute("courseId", id);
+    model.addAttribute("users", userListerService.getAllUsers());
+    return "AssignCourse";
+  }
+
+  @PostMapping("/{courseId}/assign")
+  public String assignUserForm(@PathVariable("courseId") Long courseId,
+      @RequestParam("userId") Long id) {
+    User user = userListerService.getOneById(id);
+    Course course = courseListerService.getOneById(courseId);
+    course.getUsers().add(user);
+    user.getCourses().add(course);
+    courseListerService.saveCourse(course);
+    return String.format("redirect:/course/%d", courseId);
+  }
+
+  @DeleteMapping("/{courseId}/user/{id}")
+  public String deleteUser(@PathVariable("id") Long userId, @PathVariable("courseId") Long courseId) {
+    User user = userListerService.findOneById(userId);
+    Course course = courseListerService.coursesById(courseId);
+    user.getCourses().remove(course);
+    course.getUsers().remove(user);
+    courseListerService.saveCourse(course);
+    return String.format("redirect:/course/%d", courseId);
   }
 
 }

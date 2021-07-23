@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+
 import com.example.demo.domain.Course;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface CourseListerService {
 
   void saveCourse(Course course);
 
-  Course createCourse();
-
   void deleteCourse(Long id);
+
+  Course getOneById(Long id);
 }
