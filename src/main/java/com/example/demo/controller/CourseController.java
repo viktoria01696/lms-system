@@ -5,7 +5,10 @@ import com.example.demo.domain.User;
 import com.example.demo.service.CourseListerService;
 import com.example.demo.service.LessonListerService;
 import com.example.demo.service.UserListerService;
+import java.security.Principal;
 import javax.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +28,7 @@ public class CourseController {
   private final CourseListerService courseListerService;
   private final UserListerService userListerService;
   private final LessonListerService lessonListerService;
+  private static final Logger logger = LoggerFactory.getLogger(CourseController.class);
 
   @Autowired
   public CourseController(CourseListerService courseListerService, UserListerService userListerService,
@@ -35,8 +39,11 @@ public class CourseController {
   }
 
   @GetMapping
-  public String courseTable(Model model,
+  public String courseTable(Model model, Principal principal,
       @RequestParam(name = "titlePrefix", required = false) String titlePrefix) {
+    if (principal != null) {
+      logger.info("Request from user '{}'", principal.getName());
+    }
     model.addAttribute("activePage", "courses");
     model.addAttribute("courses", courseListerService.coursesByPrefix(titlePrefix));
     return "Courses";
