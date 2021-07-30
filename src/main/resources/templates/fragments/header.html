@@ -1,16 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <header th:fragment="header">
-            <span th:classappend="${activePage == 'courses'} ? active">
-                <a th:href="@{/course}">Courses</a>
-            </span>
-  <span th:classappend="${activePage == 'users'} ? active">
-                <a th:href="@{/user}">User</a>
-            </span>
-  <form class="float-right" th:method="post" th:action="@{/logout}">
-    <button>
+
+  <span th:classappend="${activePage == 'courses'} ? active">
+   <a class="courses" th:href="@{/course}">Courses</a>
+  </span>
+
+  <a class="users" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/users}">
+    Users
+  </a>
+
+  <span sec:authorize="isAuthenticated()" th:classappend="${activePage == 'users'} ? active">
+   <a class="my-profile"  th:href="@{/user}">My profile</a>
+  </span>
+
+  <a class="login" sec:authorize="!isAuthenticated()" th:href="@{/login}">
+    Login
+  </a>
+
+  <a class="create-account" sec:authorize="!isAuthenticated()" th:href="@{/user/new}">
+    Create account
+  </a>
+
+  <form sec:authorize="isAuthenticated()" th:method="post" th:action="@{/logout}">
+    <button class="float-right">
       Logout <span sec:authentication="principal.username">Username</span>
     </button>
   </form>

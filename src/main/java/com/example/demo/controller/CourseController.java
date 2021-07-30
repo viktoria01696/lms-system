@@ -2,14 +2,19 @@ package com.example.demo.controller;
 
 import com.example.demo.domain.Course;
 import com.example.demo.domain.User;
+import com.example.demo.dto.UserDto;
 import com.example.demo.service.CourseListerService;
 import com.example.demo.service.LessonListerService;
 import com.example.demo.service.UserListerService;
 import java.security.Principal;
+import java.util.Collections;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -50,15 +55,15 @@ public class CourseController {
   }
 
   @GetMapping("/{id}")
-  @Transactional
   public String courseForm(Model model, @PathVariable("id") Long id) {
     model.addAttribute("activePage", "courses");
-    model.addAttribute("course", courseListerService.coursesById(id));
+    model.addAttribute("course", courseListerService.findCourseById(id));
     model.addAttribute("lessons", lessonListerService.getLessonsDto(id));
-    model.addAttribute("users", courseListerService.coursesById(id).getUsers());
+    model.addAttribute("users", courseListerService.findCourseById(id).getUsers());
     return "CourseInformation";
   }
 
+  @Secured("ROLE_ADMIN")
   @PostMapping
   public String submitCourseForm(@Valid Course course, BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
@@ -68,6 +73,7 @@ public class CourseController {
     return "redirect:/course";
   }
 
+  @Secured("ROLE_ADMIN")
   @GetMapping("/new")
   public String courseForm(Model model) {
     model.addAttribute("activePage", "courses");
@@ -75,24 +81,33 @@ public class CourseController {
     return "CourseInformation";
   }
 
+  @Secured("ROLE_ADMIN")
   @DeleteMapping("/{id}")
   public String deleteCourse(@PathVariable("id") Long id) {
     courseListerService.deleteCourse(id);
     return "redirect:/course";
   }
 
+  @PreAuthorize("isAuthenticated()")
   @GetMapping("/{id}/assign")
-  public String assignCourse(Model model, @PathVariable("id") Long id) {
-    model.addAttribute("activePage", "courses");
+  public String assignCourse(Model model, HttpServletRequest request,
+      @PathVariable("id") Long id) {
     model.addAttribute("courseId", id);
-    model.addAttribute("users", userListerService.getAllUsers());
+    if (request.isUserInRole("ROLE_ADMIN")) {
+      model.addAttribute("users", userListerService.findUsersNotAssignedToCourse(id));
+    }
+    else{
+      UserDto user = userListerService.findByUsername(request.getRemoteUser());
+      model.addAttribute("users", Collections.singletonList(user));
+    }
     return "AssignCourse";
   }
 
+  @PreAuthorize("isAuthenticated()")
   @PostMapping("/{courseId}/assign")
   public String assignUserForm(@PathVariable("courseId") Long courseId,
       @RequestParam("userId") Long id) {
-    User user = userListerService.getOneById(id);
+    User user = userListerService.getUserById(id);
     Course course = courseListerService.getOneById(courseId);
     course.getUsers().add(user);
     user.getCourses().add(course);
@@ -100,15 +115,18 @@ public class CourseController {
     return String.format("redirect:/course/%d", courseId);
   }
 
+  @Secured("ROLE_ADMIN")
   @DeleteMapping("/{courseId}/user/{id}")
-  public String deleteUser(@PathVariable("id") Long userId, @PathVariable("courseId") Long courseId) {
-    User user = userListerService.findOneById(userId);
-    Course course = courseListerService.coursesById(courseId);
+  public String deleteUser(@PathVariable("id") Long userId,
+      @PathVariable("courseId") Long courseId) {
+    User user = userListerService.findUserById(userId);
+    Course course = courseListerService.findCourseById(courseId);
     user.getCourses().remove(course);
     course.getUsers().remove(user);
     courseListerService.saveCourse(course);
     return String.format("redirect:/course/%d", courseId);
   }
+
 
 }
 

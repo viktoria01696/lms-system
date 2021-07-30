@@ -10,7 +10,7 @@ public interface CourseListerService {
 
   List<Course> coursesByPrefix(String prefix);
 
-  Course coursesById(Long id);
+  Course findCourseById(Long id);
 
   void saveCourse(Course course);
 

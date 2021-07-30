@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dao.CourseRepository;
 import com.example.demo.dao.LessonRepository;
-import com.example.demo.domain.Course;
 import com.example.demo.domain.Lesson;
 import com.example.demo.dto.LessonDto;
 import com.example.demo.exception.NotFoundException;
@@ -13,15 +11,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class LessonListerServiceImpl implements LessonListerService {
 
-  private LessonRepository lessonRepository;
+  private final LessonRepository lessonRepository;
 
   @Autowired
   public LessonListerServiceImpl(LessonRepository lessonRepository) {
     this.lessonRepository = lessonRepository;
   }
-
-  @Override
-  public Lesson createLesson(){ return new Lesson(); }
 
   @Override
   public void saveLesson(Lesson lesson){

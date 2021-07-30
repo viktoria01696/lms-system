@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/CreateLesson.css}">
@@ -10,13 +11,10 @@
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
-<div class="new-course">
-  <a th:href="@{/course/new}">New course</a>
-</div>
 
 <div class="main-theme">
   <div class="main-part">
-    <h1> Создать урок </h1>
+    <h1> Описание урока </h1>
     <h2> Название: </h2>
     <h3> Содержание: </h3>
     <form th:object="${lessonDto}" th:method="post" th:action="@{/lesson}">
@@ -29,13 +27,13 @@
           empty</small>
 
       <div class="help_text">
-        <textarea placeholder="Введите описание урока..." name="opinion"  id="text" rows="20" cols="30" th:field="*{text}"></textarea>
+        <textarea placeholder="Здесь должно быть описано содержание урока..." name="opinion"  id="text" rows="20" cols="30" th:field="*{text}"></textarea>
         <small class="validation-error" th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Text shouldn't be
           empty</small>
       </div>
       </div>
-      <div>
-        <button class="form_button" type="submit">Create</button>
+      <div sec:authorize="hasRole('ADMIN')">
+        <button class="form_button" type="submit">Сохранить</button>
       </div>
     </form>
   </div>

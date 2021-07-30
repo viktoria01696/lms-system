@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/CourseInformation.css}">
@@ -10,9 +11,7 @@
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
-<div class="new-course">
-  <a th:href="@{/course/new}">New course</a>
-</div>
+
 
 <div class="main-theme">
   <div class="main-part">
@@ -30,11 +29,12 @@
           <input class="form_input-author" placeholder="Введите автора курса" type="text" id="author" th:field="*{author}">
           <small class="validation-error-author" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></small>
         </div>
-        <div>
+        <div sec:authorize="hasRole('ADMIN')">
           <button class="form_button" type="submit">Сохранить</button>
         </div>
       </div>
     </form>
+
     <div class="lesson-user">
       <div th:unless="${lessons == null}">
         <h2>Список уроков</h2>
@@ -43,7 +43,7 @@
           <tr>
             <th>Id</th>
             <th>Title</th>
-            <th>Action</th>
+            <th sec:authorize="hasRole('ADMIN')">Action</th>
           </tr>
           </thead>
           <tbody>
@@ -52,7 +52,7 @@
             <td>
               <a th:text="${lesson.title}" th:href="@{/lesson/{id}(id = ${lesson.id})}">Lesson title</a>
             </td>
-            <td>
+            <td sec:authorize="hasRole('ADMIN')">
               <form th:method="delete" th:action="@{/lesson/{id}(id = ${lesson.id})}">
                 <button class="form_button_delete" type="submit">Delete</button>
               </form>
@@ -63,12 +63,12 @@
           </tr>
           </tbody>
         </table>
-        <div>
+        <div sec:authorize="hasRole('ADMIN')">
           <a class ="new-lesson" th:href="@{/lesson/new(course_id = ${course.id})}">New lesson</a>
         </div>
       </div>
 
-    <div th:unless="${users == null}">
+    <div sec:authorize="hasRole('ADMIN')" th:unless="${users == null}">
       <h3>Список участников</h3>
       <table class="user-table">
         <thead>

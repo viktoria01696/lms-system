@@ -5,6 +5,7 @@ import com.example.demo.dto.LessonDto;
 import com.example.demo.service.LessonListerService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,6 +30,7 @@ public class LessonController {
     this.lessonConverter = lessonConverter;
   }
 
+  @Secured("ROLE_ADMIN")
   @GetMapping("/new")
   public String lessonForm(Model model, @RequestParam("course_id") long courseId) {
     model.addAttribute("courseId", courseId);
@@ -36,6 +38,7 @@ public class LessonController {
     return "CreateLesson";
   }
 
+  @Secured("ROLE_ADMIN")
   @PostMapping
   public String submitLessonForm(@Valid LessonDto lessonDto, BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
@@ -52,12 +55,12 @@ public class LessonController {
     return "CreateLesson";
   }
 
+  @Secured("ROLE_ADMIN")
   @DeleteMapping("/{id}")
   public String deleteCourse(@PathVariable("id") Long id) {
     Long deletedId = lessonListerService.lessonById(id).getCourse().getId();
     lessonListerService.deleteLesson(id);
     return String.format("redirect:/course/%d", deletedId);
   }
-
 
 }

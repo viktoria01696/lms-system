@@ -30,11 +30,26 @@ public class User {
   @ManyToMany
   private Set<Role> roles;
 
+  @Column
+  private String password;
+
   public User() {
   }
 
   public User(String username) {
     this.username = username;
+  }
+
+  public User(Long id, String username,String password, Set<Role> roles) {
+    this.id = id;
+    this.username = username;
+    this.password = password;
+    this.roles = roles;
+  }
+  public User(String username,String password, Set<Role> roles) {
+    this.username = username;
+    this.password = password;
+    this.roles = roles;
   }
 
   public Long getId() {
@@ -64,6 +79,10 @@ public class User {
   public Set<Role> getRoles() { return roles; }
 
   public void setRoles(Set<Role> roles) { this.roles = roles; }
+
+  public String getPassword() { return password; }
+
+  public void setPassword(String password) { this.password = password; }
 
   @Override
   public boolean equals(Object o) {

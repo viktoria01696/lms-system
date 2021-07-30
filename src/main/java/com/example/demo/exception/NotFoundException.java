@@ -1,11 +1,19 @@
 package com.example.demo.exception;
 
+import java.security.Principal;
+
 public class NotFoundException extends RuntimeException {
 
-  private final Long id;
+  private Long id;
 
   public NotFoundException(Long id) {
-    super(String.format("Error with course ID %s", id));
+    super(String.format("Не найден курс с ID %s", id));
     this.id = id;
+  }
+  public NotFoundException(Principal principal) {
+    super(String.format("Пользователь с логином %s не найден!", principal.getName()));
+  }
+  public NotFoundException(String message) {
+    super(message);
   }
 }

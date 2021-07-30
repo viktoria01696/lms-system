@@ -5,6 +5,7 @@ import com.example.demo.domain.Course;
 import com.example.demo.exception.NotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +33,7 @@ public class CourseListerServiceImpl implements CourseListerService {
   }
 
   @Override
-  public Course coursesById(Long id) {
+  public Course findCourseById(Long id) {
     return courseRepository.findById(id)
         .orElseThrow(() -> new NotFoundException(id));
   }
@@ -49,6 +50,8 @@ public class CourseListerServiceImpl implements CourseListerService {
 
   @Override
   public Course getOneById(Long id) {
-    return courseRepository.getOne(id);
+    try { return courseRepository.getOne(id); }
+    catch (EntityNotFoundException ex){
+      throw new NotFoundException(String.format("Курс с ID %d не найден!",id));}
   }
 }

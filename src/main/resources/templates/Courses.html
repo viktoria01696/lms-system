@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/Courses.css}">
@@ -10,9 +11,9 @@
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
-<div class="new-course">
-  <a th:href="@{course/new}">New course</a>
-</div>
+
+<a class="new-course" sec:authorize="hasRole('ADMIN')" th:href="@{/course/new}">New course</a>
+
 
 <div class="main-theme">
   <div class="main-part">
@@ -39,7 +40,7 @@
         </td>
         <td th:text="${course.author}">Course author</td>
         <td>
-          <form th:method="delete" th:action="@{/course/{id}(id = ${course.id})}">
+          <form  sec:authorize="hasRole('ADMIN')" th:method="delete"  th:action="@{/course/{id}(id = ${course.id})}">
             <button class="form_button_delete" type="submit">Delete</button>
           </form>
           <form th:method="get" th:action="@{/course/{id}/assign(id = ${course.id})}">

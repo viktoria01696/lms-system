@@ -1,14 +1,30 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.User;
+import com.example.demo.dto.UserDto;
+import java.security.Principal;
 import java.util.List;
 
 public interface UserListerService {
 
-  List<User> getAllUsers();
+  List<User> findAllUsers();
 
-  User getOneById(Long id);
+  List<UserDto> findAllUsersDto();
 
-  User findOneById(Long id);
+  UserDto findUserDtoById(long id);
+
+  UserDto findByUsername(String username);
+
+  User getUserById(Long id);
+
+  User findUserById(Long id);
+
+  void deleteById(long id);
+
+  void save(UserDto userDto);
+
+  UserDto recognizeActiveUser(Principal principal);
+
+  public List<UserDto> findUsersNotAssignedToCourse(Long id);
 
 }

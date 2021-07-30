@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface LessonListerService {
 
-  Lesson createLesson();
-
   void saveLesson(Lesson lesson);
 
   Lesson lessonById(Long id);
