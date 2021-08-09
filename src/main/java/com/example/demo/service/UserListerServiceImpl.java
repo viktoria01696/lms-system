@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.conventer.UserConverter;
+import com.example.demo.converter.UserConverter;
 import com.example.demo.dao.UserRepository;
 import com.example.demo.domain.Course;
 import com.example.demo.domain.User;
@@ -66,9 +66,10 @@ public class UserListerServiceImpl implements UserListerService{
   public void deleteById(long id) {
     User user = findUserById(id);
     Set<Course> coursesForUser = user.getCourses();
-    for (Course course: coursesForUser){
-      course.getUsers().remove(user);
-    }
+    if (coursesForUser != null){
+      for (Course course: coursesForUser){
+        course.getUsers().remove(user);
+      }}
     userRepository.deleteById(id);
   }
 

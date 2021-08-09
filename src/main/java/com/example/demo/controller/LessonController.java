@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.conventer.LessonConverter;
+import com.example.demo.converter.LessonConverter;
 import com.example.demo.dto.LessonDto;
 import com.example.demo.service.LessonListerService;
 import javax.validation.Valid;
@@ -32,7 +32,7 @@ public class LessonController {
 
   @Secured("ROLE_ADMIN")
   @GetMapping("/new")
-  public String lessonForm(Model model, @RequestParam("course_id") long courseId) {
+  public String lessonNewForm(Model model, @RequestParam("course_id") long courseId) {
     model.addAttribute("courseId", courseId);
     model.addAttribute("lessonDto", new LessonDto(courseId));
     return "CreateLesson";
@@ -49,7 +49,7 @@ public class LessonController {
   }
 
   @GetMapping("/{id}")
-  public String courseForm(Model model, @PathVariable("id") Long id) {
+  public String lessonIdForm(Model model, @PathVariable("id") Long id) {
     model.addAttribute("lessonDto",
         lessonConverter.createLessonDtoFromLesson(lessonListerService.lessonById(id)));
     return "CreateLesson";
@@ -57,7 +57,7 @@ public class LessonController {
 
   @Secured("ROLE_ADMIN")
   @DeleteMapping("/{id}")
-  public String deleteCourse(@PathVariable("id") Long id) {
+  public String deleteLesson(@PathVariable("id") Long id) {
     Long deletedId = lessonListerService.lessonById(id).getCourse().getId();
     lessonListerService.deleteLesson(id);
     return String.format("redirect:/course/%d", deletedId);

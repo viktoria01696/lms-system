@@ -75,7 +75,7 @@ public class CourseController {
 
   @Secured("ROLE_ADMIN")
   @GetMapping("/new")
-  public String courseForm(Model model) {
+  public String courseNewForm(Model model) {
     model.addAttribute("activePage", "courses");
     model.addAttribute("course", new Course());
     return "CourseInformation";

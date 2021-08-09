@@ -1,10 +1,7 @@
-package com.example.demo.conventer;
+package com.example.demo.converter;
 
-import com.example.demo.dao.CourseRepository;
 import com.example.demo.dao.UserRepository;
-import com.example.demo.domain.Lesson;
 import com.example.demo.domain.User;
-import com.example.demo.dto.LessonDto;
 import com.example.demo.dto.UserDto;
 import java.util.List;
 import java.util.stream.Collectors;

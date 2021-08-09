@@ -1,4 +1,4 @@
-package com.example.demo.conventer;
+package com.example.demo.converter;
 
 import com.example.demo.dao.CourseRepository;
 import com.example.demo.domain.Lesson;
