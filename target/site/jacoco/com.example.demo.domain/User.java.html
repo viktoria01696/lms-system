@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.example.demo.domain</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">package com.example.demo.domain;
+
+
+import java.util.Objects;
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+@Entity
+@Table(name = &quot;users&quot;)
+public class User {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  @Column
+  @NotBlank(message = &quot;Имя должно быть заполнено!&quot;)
+  private String username;
+
+  @ManyToMany(mappedBy = &quot;users&quot;)
+  private Set&lt;Course&gt; courses;
+
+  @ManyToMany
+  private Set&lt;Role&gt; roles;
+
+  @Column
+  private String password;
+
+<span class="fc" id="L36">  public User() {</span>
+<span class="fc" id="L37">  }</span>
+
+<span class="nc" id="L39">  public User(String username) {</span>
+<span class="nc" id="L40">    this.username = username;</span>
+<span class="nc" id="L41">  }</span>
+
+<span class="fc" id="L43">  public User(Long id, String username,String password, Set&lt;Role&gt; roles) {</span>
+<span class="fc" id="L44">    this.id = id;</span>
+<span class="fc" id="L45">    this.username = username;</span>
+<span class="fc" id="L46">    this.password = password;</span>
+<span class="fc" id="L47">    this.roles = roles;</span>
+<span class="fc" id="L48">  }</span>
+<span class="nc" id="L49">  public User(String username,String password, Set&lt;Role&gt; roles) {</span>
+<span class="nc" id="L50">    this.username = username;</span>
+<span class="nc" id="L51">    this.password = password;</span>
+<span class="nc" id="L52">    this.roles = roles;</span>
+<span class="nc" id="L53">  }</span>
+
+  public Long getId() {
+<span class="fc" id="L56">    return id;</span>
+  }
+
+  public void setId(Long id) {
+<span class="nc" id="L60">    this.id = id;</span>
+<span class="nc" id="L61">  }</span>
+
+  public String getUsername() {
+<span class="fc" id="L64">    return username;</span>
+  }
+
+  public void setUsername(String username) {
+<span class="nc" id="L68">    this.username = username;</span>
+<span class="nc" id="L69">  }</span>
+
+  public Set&lt;Course&gt; getCourses() {
+<span class="fc" id="L72">    return courses;</span>
+  }
+
+  public void setCourses(Set&lt;Course&gt; courses) {
+<span class="fc" id="L76">    this.courses = courses;</span>
+<span class="fc" id="L77">  }</span>
+
+<span class="fc" id="L79">  public Set&lt;Role&gt; getRoles() { return roles; }</span>
+
+<span class="nc" id="L81">  public void setRoles(Set&lt;Role&gt; roles) { this.roles = roles; }</span>
+
+<span class="fc" id="L83">  public String getPassword() { return password; }</span>
+
+<span class="nc" id="L85">  public void setPassword(String password) { this.password = password; }</span>
+
+  @Override
+  public boolean equals(Object o) {
+<span class="nc bnc" id="L89" title="All 2 branches missed.">    if (this == o) return true;</span>
+<span class="nc bnc" id="L90" title="All 4 branches missed.">    if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="nc" id="L91">    User user = (User) o;</span>
+<span class="nc" id="L92">    return id.equals(user.id);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L97">    return Objects.hash(id);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LessonDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.example.demo.dto</a> &gt; <span class="el_source">LessonDto.java</span></div><h1>LessonDto.java</h1><pre class="source lang-java linenums">package com.example.demo.dto;
+
+import javax.validation.constraints.NotBlank;
+
+public class LessonDto {
+
+  private Long id;
+
+  @NotBlank(message = &quot;Заголовок урока должен быть заполнен!&quot;)
+  private String title;
+
+  @NotBlank(message = &quot;Содержание урока должно быть заполнено!&quot;)
+  private String text;
+
+  private Long courseId;
+
+<span class="fc" id="L17">  public LessonDto() {</span>
+<span class="fc" id="L18">  }</span>
+
+<span class="nc" id="L20">  public LessonDto(Long courseId) {</span>
+<span class="nc" id="L21">    this.courseId = courseId;</span>
+<span class="nc" id="L22">  }</span>
+
+<span class="fc" id="L24">  public LessonDto(Long id, String title, String text, Long courseId) {</span>
+<span class="fc" id="L25">    this.id = id;</span>
+<span class="fc" id="L26">    this.title = title;</span>
+<span class="fc" id="L27">    this.text = text;</span>
+<span class="fc" id="L28">    this.courseId = courseId;</span>
+<span class="fc" id="L29">  }</span>
+
+  public Long getId() {
+<span class="fc" id="L32">    return id;</span>
+  }
+
+  public void setId(Long id) {
+<span class="nc" id="L36">    this.id = id;</span>
+<span class="nc" id="L37">  }</span>
+
+  public String getTitle() {
+<span class="fc" id="L40">    return title;</span>
+  }
+
+  public void setTitle(String title) {
+<span class="nc" id="L44">    this.title = title;</span>
+<span class="nc" id="L45">  }</span>
+
+  public String getText() {
+<span class="fc" id="L48">    return text;</span>
+  }
+
+  public void setText(String text) {
+<span class="nc" id="L52">    this.text = text;</span>
+<span class="nc" id="L53">  }</span>
+
+  public Long getCourseId() {
+<span class="fc" id="L56">    return courseId;</span>
+  }
+
+  public void setCourseId(Long courseId) {
+<span class="nc" id="L60">    this.courseId = courseId;</span>
+<span class="nc" id="L61">  }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

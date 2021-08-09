@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/UserForm.css}">
+  <title>user form</title>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Staatliches&family=Teko:wght@500&display=swap"
+      rel="stylesheet">
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+
+<div class="main-theme">
+  <div class="main-part">
+    <h1>Информация о пользователе</h1>
+    <form th:object="${user}" th:method="post" th:action="@{/user}">
+      <input type="hidden" th:field="*{id}">
+        <div>
+          <label class="label1" for="username">Имя пользователя:</label>
+          <input class="form_input-name" placeholder="Введите имя пользователя" type="text" id="username" th:field="*{username}">
+          <small class="validation-error-username" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>
+        </div>
+        <div>
+          <label class="label2" for="password">Пароль:</label>
+          <input class="form_input-password" placeholder="Введите пароль" type="password" id="password" th:field="*{password}">
+          <small class="validation-error-password" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
+        </div>
+        <div sec:authorize="!hasRole('STUDENT')" class="form-group">
+          <label class="label3" for="roles">Статус:</label>
+          <select multiple class="form-control" id="roles" th:field="*{roles}" required>
+            <option th:each="role : ${roles}"
+                    th:text="${role.name}"
+                    th:value="${role.id}"
+                    th:selected="${user.roles?.contains(role)}"></option>
+          </select>
+        </div>
+        <div>
+          <button class="form_button" type="submit">Сохранить</button>
+        </div>
+    </form>
+  </div>
+</div>
+
+
+</body>
+</html>

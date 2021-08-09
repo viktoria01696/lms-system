@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/Users.css}">
+  <title>courses</title>
+  <link
+      href="http://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Staatliches&family=Teko:wght@500&display=swap"
+      rel="stylesheet">
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+
+<div class="main-theme">
+  <div class="main-part">
+    <h1> Пользователи </h1>
+    <table class="user-table">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:unless="${users.empty}" th:each="user : ${users}">
+        <td th:text="${user.id}">1</td>
+        <td>
+          <a th:text="${user.username}">Username</a>
+        </td>
+        <td>
+          <form th:method="delete"  th:action="@{/admin/user/{id}(id = ${user.id})}">
+            <button class="form_button_delete" type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <tr th:if="${users.empty}" >
+        <td colspan="4">Пользователи не найдены!</td>
+      </tr>
+      </tbody>
+    </table>
+    <div>
+      <a class="new-user" th:href="@{/user/new}">New user</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
