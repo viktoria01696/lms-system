@@ -24,10 +24,15 @@
     Create account
   </a>
 
-  <form sec:authorize="isAuthenticated()" th:method="post" th:action="@{/logout}">
+  <form class="logout-form" sec:authorize="isAuthenticated()" th:method="post" th:action="@{/logout}">
     <button class="float-right">
       Logout <span sec:authentication="principal.username">Username</span>
     </button>
+    <div>
+      <a th:href="@{/user}">
+        <img class="image" th:src="@{/user/avatar}" alt="User profile" width="250">
+      </a>
+    </div>
   </form>
 </header>
 

@@ -125,7 +125,7 @@ public class UserListerServiceTest {
     UserDto userDto = new UserDto(1L, "Петр", "1234", new HashSet<>());
     when(userRepository.findUserByUsername("Петр")).thenReturn(Optional.of(user));
     when(userConverter.createUserDtoFromUser(user)).thenReturn(userDto);
-    UserDto userDtoTest = userListerServiceImpl.findByUsername("Петр");
+    UserDto userDtoTest = userListerServiceImpl.findUserDtoByUsername("Петр");
     InOrder inOrder = Mockito.inOrder(userRepository, userConverter);
     inOrder.verify(userRepository, times(1)).findUserByUsername("Петр");
     inOrder.verify(userConverter, times(1)).createUserDtoFromUser(user);
@@ -139,7 +139,7 @@ public class UserListerServiceTest {
   public void findByWrongUsernameTest() {
     Assertions.assertThrows(NotFoundException.class, () -> {
       when(userRepository.findUserByUsername("Аристарх")).thenThrow(NotFoundException.class);
-      UserDto userDtoTest = userListerServiceImpl.findByUsername("Аристарх");
+      UserDto userDtoTest = userListerServiceImpl.findUserDtoByUsername("Аристарх");
       verify(userRepository, times(1)).findUserByUsername("Аристарх");
     });
   }

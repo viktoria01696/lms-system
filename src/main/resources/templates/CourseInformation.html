@@ -8,14 +8,43 @@
   <link
       href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Staatliches&family=Teko:wght@500&display=swap"
       rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script>
+    $(document).ready( function() {
+        $("#fl_inp").change(function(){
+             var filename = $(this).val().replace(/.*\\/, "");
+             $("#fl_nm").html(filename);
+        });
+    });
+</script>
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
 
-
 <div class="main-theme">
   <div class="main-part">
     <h1> Информация о курсе </h1>
+
+    <div class="avatar-form">
+      <div th:if="${id != null}">
+      <form  th:object="${course}" th:method="post" th:action="@{/course/{courseId}/avatar(courseId = ${course.id})}" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}">
+        <div>
+          <img class="course-image" th:src="@{/course/{courseId}/avatar(courseId = ${course.id})}" alt="Course profile" width="300">
+        </div>
+        <label class="label3">Аватарка:</label>
+        <div sec:authorize="hasRole('ADMIN')" class="fl_upld">
+          <label><input id="fl_inp" type="file" name="avatar">Выберите файл</label>
+          <div id="fl_nm"></div>
+        </div>
+        <div sec:authorize="hasRole('ADMIN')" class="avatar-button-help">
+          <button class="avatar-button">Сохранить аватар</button>
+        </div>
+      </form>
+      </div>
+    </div>
+
+    <div>
     <form th:object="${course}" th:method="post" th:action="@{/course}">
       <input type="hidden" th:field="*{id}">
       <div class="form_group">
@@ -34,8 +63,9 @@
         </div>
       </div>
     </form>
+    </div>
 
-    <div class="lesson-user">
+    <div  class="lesson-user">
       <div th:unless="${lessons == null}">
         <h2>Список уроков</h2>
         <table class = "lesson-table">

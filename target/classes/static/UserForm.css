@@ -54,9 +54,11 @@ h1{
     position: relative;
     margin-bottom: 0px;
 }
-.form_button {
+.form_button{
+    background-color: #4698f1;
+    position: absolute;
     letter-spacing: 1px;
-    font-size: 23px;
+    font-size: 30px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -65,44 +67,53 @@ h1{
     cursor: pointer;
     font-family: 'Caveat', cursive;
     right:100px;
+    top: 740px;
 }
-.form_button{
-    background-color: #4698f1;
-    position: absolute;
-    top: 590px;
-}
-label{
+label,
+h2{
     font-family: 'Caveat', cursive;
     letter-spacing: 1px;
     font-size: 35px;
     color: #5e83ab;
-    position: absolute;
     padding: 0 0 10px 0;
     border: none;
 }
 .label1{
+    position: absolute;
     top:195px;
     left:-260px;
 }
 .label2{
+    position: absolute;
     top:295px;
     left:-120px;
 }
 .label3{
-    top:395px;
+    position: relative;
+    top:210px;
     left:-130px;
+}
+.label4{
+    position: absolute;
+    top:60px;
+    left:-160px;
+}
+h2{
+    top: -30px;
+    left: 210px;
+    width: 1200px;
 }
 .validation-error-username,
 .validation-error-password{
     color: red;
-    position:relative;
+    position: absolute;
     font-size:30px;
 }
 .validation-error-username{
-    top:90px;
+    top:240px;
 }
 .validation-error-password{
-    top:140px;
+    top:340px;
 }
 select{
     width:100%;
@@ -112,8 +123,54 @@ select{
     font-size: 30px;
     background-color: transparent;
     border-radius: 4px 4px 4px 4px;
+    position:relative;
+    top:170px;
+}
+.avatar-form{
+    position:relative;
+    top:150px;
+}
+.fl_upld{width:300px;}
+#fl_inp{display:none;}
+.fl_upld label{
     position:absolute;
-    top:410px;
+    width: 200px;
+    left:0px;
+    top: 70px;
+    cursor:pointer;
+    background:#4698f1;
+    border-radius:5px;
+    padding:0px 10px;
+    color:white;
+    text-align: center;
+    font-size: 30px;
+}
+#fl_nm{
+    position:absolute;
+    top: 70px;
+    left: 230px;
+    letter-spacing: 1px;
+    font-size: 30px;
+    width: 600px;
+    color: #5e83ab;}
+
+.avatar-button{
+    display: inline-block;
+    top: 130px;
+    position: relative;
+    background-color: #4698f1;
+    letter-spacing: 1px;
+    font-size: 30px;
+    text-align: center;
+    width: 260px;
+    height: 50px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    outline:none;
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
 }
 .courses,
 .users {
@@ -144,6 +201,13 @@ select{
      text-decoration: none;
      text-align:center;
 }
+.logout-form{
+     position:absolute;
+     margin:0 auto;
+     top:90px;
+     right:30px;
+     text-align: right;
+}
 .float-right{
      letter-spacing: 1px;
      font-size: 35px;
@@ -154,10 +218,11 @@ select{
      outline:none;
      cursor: pointer;
      font-family: 'Caveat', cursive;
-     position:absolute;
-     margin:0 auto;
-     right:30px;
-     top:90px;
+}
+.image{
+     position: relative;
+     top:10px;
+     border-radius: 10px;
 }
 .login,
 .create-account{

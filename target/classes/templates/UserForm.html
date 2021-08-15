@@ -8,6 +8,15 @@
   <link
       href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Staatliches&family=Teko:wght@500&display=swap"
       rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script>
+    $(document).ready( function() {
+        $("#fl_inp").change(function(){
+             var filename = $(this).val().replace(/.*\\/, "");
+             $("#fl_nm").html(filename);
+        });
+    });
+</script>
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
@@ -15,7 +24,9 @@
 <div class="main-theme">
   <div class="main-part">
     <h1>Информация о пользователе</h1>
-    <form th:object="${user}" th:method="post" th:action="@{/user}">
+
+
+    <form th:object="${user}"  th:method="post" th:action="@{/user}">
       <input type="hidden" th:field="*{id}">
         <div>
           <label class="label1" for="username">Имя пользователя:</label>
@@ -27,6 +38,7 @@
           <input class="form_input-password" placeholder="Введите пароль" type="password" id="password" th:field="*{password}">
           <small class="validation-error-password" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
         </div>
+
         <div sec:authorize="!hasRole('STUDENT')" class="form-group">
           <label class="label3" for="roles">Статус:</label>
           <select multiple class="form-control" id="roles" th:field="*{roles}" required>
@@ -40,7 +52,21 @@
           <button class="form_button" type="submit">Сохранить</button>
         </div>
     </form>
+
+    <div th:if="${username!= null}">
+    <form class="avatar-form"  th:object="${user}" th:method="post" th:action="@{/user/avatar}" enctype="multipart/form-data">
+      <input type="hidden" th:field="*{id}">
+      <label class="label4">Аватарка:</label>
+      <div class="fl_upld">
+        <label><input id="fl_inp" type="file" name="avatar">Выберите файл</label>
+        <div id="fl_nm"></div>
+      </div>
+      <div>
+        <button class="avatar-button">Сохранить аватар</button>
+      </div>
+    </form>
   </div>
+</div>
 </div>
 
 

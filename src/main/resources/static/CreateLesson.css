@@ -138,6 +138,13 @@ h3{
      text-decoration: none;
      text-align:center;
 }
+.logout-form{
+     position:absolute;
+     margin:0 auto;
+     top:90px;
+     right:30px;
+     text-align: right;
+}
 .float-right{
      letter-spacing: 1px;
      font-size: 35px;
@@ -148,10 +155,11 @@ h3{
      outline:none;
      cursor: pointer;
      font-family: 'Caveat', cursive;
-     position:absolute;
-     margin:0 auto;
-     right:30px;
-     top:90px;
+}
+.image{
+     position: relative;
+     top:10px;
+     border-radius: 10px;
 }
 .login,
 .create-account{

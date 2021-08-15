@@ -13,7 +13,9 @@ public interface UserListerService {
 
   UserDto findUserDtoById(long id);
 
-  UserDto findByUsername(String username);
+  UserDto findUserDtoByUsername(String username);
+
+  User findUserByUsername(String username);
 
   User getUserById(Long id);
 

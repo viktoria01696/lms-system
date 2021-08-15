@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -37,6 +38,9 @@ public class Course {
 
   @ManyToMany
   private Set<User> users;
+
+  @OneToOne(mappedBy = "course", cascade = CascadeType.REMOVE)
+  private AvatarImage avatarImage;
 
   public Course() {
   }
@@ -85,6 +89,14 @@ public class Course {
 
   public void setUsers(Set<User> users) {
     this.users = users;
+  }
+
+  public AvatarImage getAvatarImage() {
+    return avatarImage;
+  }
+
+  public void setAvatarImage(AvatarImage avatarImage) {
+    this.avatarImage = avatarImage;
   }
 
   @Override

@@ -44,12 +44,21 @@ public class UserListerServiceImpl implements UserListerService{
   }
 
   @Override
-  public UserDto findByUsername(String username) {
+  public UserDto findUserDtoByUsername(String username) {
     User user = userRepository.findUserByUsername(username)
         .orElseThrow(() -> new NotFoundException(
             String.format("Пользователь с логином %s не найден!", username)
         ));
     return userConverter.createUserDtoFromUser(user);
+  }
+
+  @Override
+  public User findUserByUsername(String username) {
+    User user = userRepository.findUserByUsername(username)
+        .orElseThrow(() -> new NotFoundException(
+            String.format("Пользователь с логином %s не найден!", username)
+        ));
+    return user;
   }
 
   @Override

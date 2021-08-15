@@ -186,7 +186,7 @@ class CourseControllerTest {
         .with(user("user").password("password").roles("STUDENT")))
         .apply(springSecurity())
         .build();
-    when(userListerService.findByUsername("user")).thenReturn(new UserDto());
+    when(userListerService.findUserDtoByUsername("user")).thenReturn(new UserDto());
     MockHttpServletRequestBuilder builder = get("/course/{id}/assign", 1);
     mockMvc
         .perform(builder)
@@ -195,7 +195,7 @@ class CourseControllerTest {
         .andExpect(MockMvcResultMatchers.model().attributeExists("users"))
         .andExpect(MockMvcResultMatchers.model().attributeExists("courseId"))
         .andExpect(MockMvcResultMatchers.view().name("AssignCourse"));
-    verify(userListerService, times(1)).findByUsername("user");
+    verify(userListerService, times(1)).findUserDtoByUsername("user");
   }
 
   @Test
