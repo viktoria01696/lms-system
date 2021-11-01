@@ -5,18 +5,18 @@ import java.util.Optional;
 
 public interface AvatarStorageService {
 
-  void saveUserAvatar(String username, String contentType, String nativeName, InputStream is);
+    void saveUserAvatar(String username, String contentType, String nativeName, InputStream is);
 
-  void saveCourseAvatar(Long id, String contentType, String nativeName, InputStream is);
+    void saveCourseAvatar(Long id, String contentType, String nativeName, InputStream is);
 
-  Optional<String> getContentTypeByUser(String username);
+    Optional<String> getContentTypeByUser(String username);
 
-  Optional<String> getContentTypeByCourse(Long id);
+    Optional<String> getContentTypeByCourse(Long id);
 
-  Optional<byte[]> getAvatarImageByUser(String username);
+    Optional<byte[]> getAvatarImageByUser(String username);
 
-  Optional<byte[]> getAvatarImageByCourse(Long id);
+    Optional<byte[]> getAvatarImageByCourse(Long id);
 
-  Optional<byte[]> getNullAvatarImage(String avatar);
+    Optional<byte[]> getNullAvatarImage(String avatar);
 
 }

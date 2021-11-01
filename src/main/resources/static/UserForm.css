@@ -1,4 +1,4 @@
-body{
+body {
     background-image: url("../images/main-theme.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -11,16 +11,17 @@ body{
     font-family: 'Caveat', cursive;
 }
 
-h1{
+h1 {
     font-size: 100px;
-    color:black;
+    color: black;
     padding: 0 0 0 20px;
     position: relative;
     margin: 0 auto;
-    top:50px;
-    left:100px;
+    top: 50px;
+    left: 100px;
 }
-.main-part{
+
+.main-part {
     width: 1200px;
     height: 100%;
     margin: auto;
@@ -30,8 +31,9 @@ h1{
     right: 0;
     z-index: 0;
 }
+
 .form_input-name,
-.form_input-password{
+.form_input-password {
     font-family: 'Caveat', cursive;
     letter-spacing: 1px;
     font-size: 30px;
@@ -44,17 +46,21 @@ h1{
     background-color: transparent;
     outline: none;
 }
-.form_input-name{
-    top:200px;
+
+.form_input-name {
+    top: 200px;
 }
-.form_input-password{
-    top:300px;
+
+.form_input-password {
+    top: 300px;
 }
-.form_group{
+
+.form_group {
     position: relative;
     margin-bottom: 0px;
 }
-.form_button{
+
+.form_button {
     background-color: #4698f1;
     position: absolute;
     letter-spacing: 1px;
@@ -63,14 +69,15 @@ h1{
     border: none;
     border-radius: 5px;
     color: white;
-    outline:none;
+    outline: none;
     cursor: pointer;
     font-family: 'Caveat', cursive;
-    right:100px;
+    right: 100px;
     top: 740px;
 }
+
 label,
-h2{
+h2 {
     font-family: 'Caveat', cursive;
     letter-spacing: 1px;
     font-size: 35px;
@@ -78,83 +85,102 @@ h2{
     padding: 0 0 10px 0;
     border: none;
 }
-.label1{
+
+.label1 {
     position: absolute;
-    top:195px;
-    left:-260px;
+    top: 195px;
+    left: -260px;
 }
-.label2{
+
+.label2 {
     position: absolute;
-    top:295px;
-    left:-120px;
+    top: 295px;
+    left: -120px;
 }
-.label3{
+
+.label3 {
     position: relative;
-    top:210px;
-    left:-130px;
+    top: 210px;
+    left: -130px;
 }
-.label4{
+
+.label4 {
     position: absolute;
-    top:60px;
-    left:-160px;
+    top: 60px;
+    left: -160px;
 }
-h2{
+
+h2 {
     top: -30px;
     left: 210px;
     width: 1200px;
 }
+
 .validation-error-username,
-.validation-error-password{
+.validation-error-password {
     color: red;
     position: absolute;
-    font-size:30px;
+    font-size: 30px;
 }
-.validation-error-username{
-    top:240px;
+
+.validation-error-username {
+    top: 240px;
 }
-.validation-error-password{
-    top:340px;
+
+.validation-error-password {
+    top: 340px;
 }
-select{
-    width:100%;
-    max-height:200px;
+
+select {
+    width: 100%;
+    max-height: 200px;
     margin: 0 auto;
     font-family: 'Caveat', cursive;
     font-size: 30px;
     background-color: transparent;
     border-radius: 4px 4px 4px 4px;
-    position:relative;
-    top:170px;
+    position: relative;
+    top: 170px;
 }
-.avatar-form{
-    position:relative;
-    top:150px;
+
+.avatar-form {
+    position: relative;
+    top: 150px;
 }
-.fl_upld{width:300px;}
-#fl_inp{display:none;}
-.fl_upld label{
-    position:absolute;
+
+.fl_upld {
+    width: 300px;
+}
+
+#fl_inp {
+    display: none;
+}
+
+.fl_upld label {
+    position: absolute;
     width: 200px;
-    left:0px;
+    left: 0px;
     top: 70px;
-    cursor:pointer;
-    background:#4698f1;
-    border-radius:5px;
-    padding:0px 10px;
-    color:white;
+    cursor: pointer;
+    background: #4698f1;
+    border-radius: 5px;
+    padding: 0px 10px;
+    color: white;
     text-align: center;
     font-size: 30px;
 }
-#fl_nm{
-    position:absolute;
+
+#fl_nm {
+    position: absolute;
     top: 70px;
     left: 230px;
     letter-spacing: 1px;
     font-size: 30px;
     width: 600px;
-    color: #5e83ab;}
+    color: #5e83ab;
+}
 
-.avatar-button{
+.avatar-button {
     display: inline-block;
     top: 130px;
     position: relative;
@@ -168,80 +194,90 @@ select{
     border: none;
     border-radius: 5px;
     color: white;
-    outline:none;
+    outline: none;
     cursor: pointer;
     font-family: 'Caveat', cursive;
 }
+
 .courses,
 .users {
-     position:absolute;
-     top:10px;
-     font-size: 40px;
-     text-decoration: none;
-     color: blue;
+    position: absolute;
+    top: 10px;
+    font-size: 40px;
+    text-decoration: none;
+    color: blue;
 }
-.courses{
-     left:20px;
+
+.courses {
+    left: 20px;
 }
-.users{
-     left:150px;
+
+.users {
+    left: 150px;
 }
-.my-profile{
-     background-color:#4698f1;
-     border: none;
-     border-radius: 5px;
-     cursor: pointer;
-     color: white;
-     width:183px;
-     height:50px;
-     position:absolute;
-     top:30px;
-     right:30px;
-     font-size: 35px;
-     text-decoration: none;
-     text-align:center;
+
+.my-profile {
+    background-color: #4698f1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    width: 183px;
+    height: 50px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 35px;
+    text-decoration: none;
+    text-align: center;
 }
-.logout-form{
-     position:absolute;
-     margin:0 auto;
-     top:90px;
-     right:30px;
-     text-align: right;
+
+.logout-form {
+    position: absolute;
+    margin: 0 auto;
+    top: 90px;
+    right: 30px;
+    text-align: right;
 }
-.float-right{
-     letter-spacing: 1px;
-     font-size: 35px;
-     border: none;
-     border-radius: 5px;
-     color: white;
-     background-color: #4698f1;
-     outline:none;
-     cursor: pointer;
-     font-family: 'Caveat', cursive;
+
+.float-right {
+    letter-spacing: 1px;
+    font-size: 35px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #4698f1;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
 }
-.image{
-     position: relative;
-     top:10px;
-     border-radius: 10px;
+
+.image {
+    position: relative;
+    top: 10px;
+    border-radius: 10px;
 }
+
 .login,
-.create-account{
-     background-color:#4698f1;
-     border: none;
-     border-radius: 5px;
-     cursor: pointer;
-     color: white;
-     width:200px;
-     height:50px;
-     position:absolute;
-     right:30px;
-     font-size: 35px;
-     text-decoration: none;
-     text-align:center;
+.create-account {
+    background-color: #4698f1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    right: 30px;
+    font-size: 35px;
+    text-decoration: none;
+    text-align: center;
 }
-.login{
-     top:30px;
+
+.login {
+    top: 30px;
 }
-.create-account{
-     top:90px;
+
+.create-account {
+    top: 90px;
 }

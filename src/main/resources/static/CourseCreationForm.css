@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     line-height: 1.6;
     font-family: 'Caveat', cursive;
@@ -6,11 +6,11 @@ body{
 
 *,
 *:before,
-*:after{
+*:after {
     box-sizing: border-box;
 }
 
-.main-theme{
+.main-theme {
     width: 100%;
     height: 100vh;
     background: url("../images/main-theme.jpg") center no-repeat;
@@ -18,43 +18,47 @@ body{
     margin: 0 auto;
     z-index: -2;
 }
-h1{
+
+h1 {
     font-size: 100px;
-    color:black;
+    color: black;
     padding: 0 0 0 20px;
     position: relative;
-    top:20px;
+    top: 20px;
     margin: 0;
 }
-h2{
+
+h2 {
     font-size: 30px;
-    color:black;
+    color: black;
     padding: 0 0 0 30px;
     position: absolute;
-    top:300px;
+    top: 300px;
     margin: 0;
     opacity: 0.2;
 }
-h3{
+
+h3 {
     font-size: 30px;
-    color:black;
+    color: black;
     padding: 0 0 0 30px;
     margin: 0;
     position: absolute;
-    top:420px;
-    z-index:30;
-}
-h4{
-    font-size: 30px;
-    color:black;
-    padding: 0 0 0 30px;
-    margin: 0;
-    position: absolute;
-    top:620px;
-    z-index:30;
+    top: 420px;
+    z-index: 30;
 }
 
-.main-part{
+h4 {
+    font-size: 30px;
+    color: black;
+    padding: 0 0 0 30px;
+    margin: 0;
+    position: absolute;
+    top: 620px;
+    z-index: 30;
+}
+
+.main-part {
     width: 1200px;
     height: 100%;
     margin: auto;
@@ -64,7 +68,8 @@ h4{
     right: 0;
     z-index: 0;
 }
-.form{
+
+.form {
     position: absolute;
     top: 10px;
     width: 100%;
@@ -72,40 +77,45 @@ h4{
     padding: 32px;
     border-radius: 10px;
     box-shadow: 0 4px 16px #ccc;
-    background-color:white;
+    background-color: white;
     opacity: 0.3;
     letter-spacing: 1px;
 }
-.form_input-name{
+
+.form_input-name {
     font-family: 'Caveat', cursive;
     letter-spacing: 1px;
-    font-size: 30px; 
+    font-size: 30px;
     color: black;
     position: absolute;
-    top:150px;
+    top: 150px;
 }
-.form_input-author{
+
+.form_input-author {
     font-family: 'Caveat', cursive;
     letter-spacing: 1px;
-    font-size: 30px; 
+    font-size: 30px;
     color: black;
     position: absolute;
-    top:200px;
+    top: 200px;
 }
-.form_group{
+
+.form_group {
     position: relative;
     margin-bottom: 0px;
 }
-.form_label{
+
+.form_label {
     position: absolute;
-    left:0;
+    left: 0;
     top: 0;
     z-index: -1;
     color: white;
     transition: 0.3s;
 }
+
 .form_input-name,
-.form_input-author{
+.form_input-author {
     width: 100%;
     padding: 0 0 10px 0;
     border: none;
@@ -113,46 +123,52 @@ h4{
     background-color: transparent;
     outline: none;
 }
+
 .form_button,
 .form_button_delete,
-.form_button_getaway{
+.form_button_getaway {
     letter-spacing: 1px;
-    font-size: 23px; 
+    font-size: 23px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     color: white;
     background-color: #0071f0;
-    outline:none;
+    outline: none;
     cursor: pointer;
     font-family: 'Caveat', cursive;
     position: absolute;
 }
-.form_button{
+
+.form_button {
     top: 320px;
-    right:100px;
+    right: 100px;
 }
-.form_button_delete{
+
+.form_button_delete {
     top: 525px;
-    right:125px;
-    z-index: 20;
-}
-.form_button_getaway{
-    top: 725px;
-    right:100px;
+    right: 125px;
     z-index: 20;
 }
 
-.helper{
+.form_button_getaway {
+    top: 725px;
+    right: 100px;
+    z-index: 20;
+}
+
+.helper {
     width: 200px;
     height: 200px;
     position: absolute;
-    left:230px;
-    top:300px;
+    left: 230px;
+    top: 300px;
 }
-.file-upload input[type="file"]{
+
+.file-upload input[type="file"] {
     display: none;
 }
+
 .file-upload {
     position: relative;
     overflow: hidden;
@@ -162,11 +178,13 @@ h4{
     border-radius: 10px;
     color: white;
     text-align: center;
-    
+
 }
+
 .file-upload:hover {
     background: #1E90FF;
 }
+
 .file-upload label {
     display: block;
     position: absolute;
@@ -175,13 +193,15 @@ h4{
     height: 100%;
     cursor: pointer;
 }
+
 .file-upload span {
     line-height: 40px;
-    font-weight:bold;
+    font-weight: bold;
     letter-spacing: 1px;
-    font-size: 25px; 
+    font-size: 25px;
 }
-.form_buttom{
+
+.form_buttom {
     width: 100%;
     height: 500px;
     position: absolute;
@@ -189,40 +209,46 @@ h4{
     padding: 32px;
     border-radius: 10px;
     box-shadow: 0 4px 16px #ccc;
-    background-color:dimgrey;
+    background-color: dimgrey;
     opacity: 0.2;
     letter-spacing: 1px;
     z-index: -1;
 }
+
 .first-table,
-.second-table{
+.second-table {
     width: 1100px;
     height: 100px;
-    position: absolute; 
+    position: absolute;
     left: 50px;
-    margin: 0; 
+    margin: 0;
     border-collapse: collapse;
-    font-size:25px; 
-    color:black;
+    font-size: 25px;
+    color: black;
     z-index: 2;
     background: #E6EEEE;
-    font-weight:bold;
+    font-weight: bold;
     text-align: center;
 }
-.first-table{
+
+.first-table {
     top: 480px;
 }
-.second-table{
-    top: 680px; 
+
+.second-table {
+    top: 680px;
 }
-.wp-table td{
+
+.wp-table td {
     border: 1px solid black;
-     
+
 }
-.wp-table tr:nth-child(odd){
-    background:#E6EEEE;
+
+.wp-table tr:nth-child(odd) {
+    background: #E6EEEE;
 }
-.wp-table tr:hover{
-    background:#E6EEEE; 
+
+.wp-table tr:hover {
+    background: #E6EEEE;
     color: darkblue;
 }

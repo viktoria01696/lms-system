@@ -1,72 +1,77 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" th:href="@{/UserForm.css}">
-  <title>user form</title>
-  <link
-      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Staatliches&family=Teko:wght@500&display=swap"
-      rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script>
-    $(document).ready( function() {
-        $("#fl_inp").change(function(){
-             var filename = $(this).val().replace(/.*\\/, "");
-             $("#fl_nm").html(filename);
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/UserForm.css}">
+    <title>user form</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Staatliches&family=Teko:wght@500&display=swap"
+            rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#fl_inp").change(function () {
+                var filename = $(this).val().replace(/.*\\/, "");
+                $("#fl_nm").html(filename);
+            });
         });
-    });
-</script>
+    </script>
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
 
 <div class="main-theme">
-  <div class="main-part">
-    <h1>Информация о пользователе</h1>
+    <div class="main-part">
+        <h1>Информация о пользователе</h1>
 
 
-    <form th:object="${user}"  th:method="post" th:action="@{/user}">
-      <input type="hidden" th:field="*{id}">
-        <div>
-          <label class="label1" for="username">Имя пользователя:</label>
-          <input class="form_input-name" placeholder="Введите имя пользователя" type="text" id="username" th:field="*{username}">
-          <small class="validation-error-username" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>
-        </div>
-        <div>
-          <label class="label2" for="password">Пароль:</label>
-          <input class="form_input-password" placeholder="Введите пароль" type="password" id="password" th:field="*{password}">
-          <small class="validation-error-password" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
-        </div>
+        <form th:action="@{/user}" th:method="post" th:object="${user}">
+            <input th:field="*{id}" type="hidden">
+            <div>
+                <label class="label1" for="username">Имя пользователя:</label>
+                <input class="form_input-name" id="username" placeholder="Введите имя пользователя" th:field="*{username}"
+                       type="text">
+                <small class="validation-error-username" th:errors="*{username}"
+                       th:if="${#fields.hasErrors('username')}"></small>
+            </div>
+            <div>
+                <label class="label2" for="password">Пароль:</label>
+                <input class="form_input-password" id="password" placeholder="Введите пароль" th:field="*{password}"
+                       type="password">
+                <small class="validation-error-password" th:errors="*{password}"
+                       th:if="${#fields.hasErrors('password')}"></small>
+            </div>
 
-        <div sec:authorize="!hasRole('STUDENT')" class="form-group">
-          <label class="label3" for="roles">Статус:</label>
-          <select multiple class="form-control" id="roles" th:field="*{roles}" required>
-            <option th:each="role : ${roles}"
-                    th:text="${role.name}"
-                    th:value="${role.id}"
-                    th:selected="${user.roles?.contains(role)}"></option>
-          </select>
-        </div>
-        <div>
-          <button class="form_button" type="submit">Сохранить</button>
-        </div>
-    </form>
+            <div class="form-group" sec:authorize="!hasRole('STUDENT')">
+                <label class="label3" for="roles">Статус:</label>
+                <select class="form-control" id="roles" multiple required th:field="*{roles}">
+                    <option th:each="role : ${roles}"
+                            th:selected="${user.roles?.contains(role)}"
+                            th:text="${role.name}"
+                            th:value="${role.id}"></option>
+                </select>
+            </div>
+            <div>
+                <button class="form_button" type="submit">Сохранить</button>
+            </div>
+        </form>
 
-    <div th:if="${username!= null}">
-    <form class="avatar-form"  th:object="${user}" th:method="post" th:action="@{/user/avatar}" enctype="multipart/form-data">
-      <input type="hidden" th:field="*{id}">
-      <label class="label4">Аватарка:</label>
-      <div class="fl_upld">
-        <label><input id="fl_inp" type="file" name="avatar">Выберите файл</label>
-        <div id="fl_nm"></div>
-      </div>
-      <div>
-        <button class="avatar-button">Сохранить аватар</button>
-      </div>
-    </form>
-  </div>
-</div>
+        <div th:if="${username!= null}">
+            <form class="avatar-form" enctype="multipart/form-data" th:action="@{/user/avatar}" th:method="post"
+                  th:object="${user}">
+                <input th:field="*{id}" type="hidden">
+                <label class="label4">Аватарка:</label>
+                <div class="fl_upld">
+                    <label><input id="fl_inp" name="avatar" type="file">Выберите файл</label>
+                    <div id="fl_nm"></div>
+                </div>
+                <div>
+                    <button class="avatar-button">Сохранить аватар</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 

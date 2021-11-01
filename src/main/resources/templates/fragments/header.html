@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 
 <header th:fragment="header">
 
@@ -8,32 +8,32 @@
    <a class="courses" th:href="@{/course}">Courses</a>
   </span>
 
-  <a class="users" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/users}">
-    Users
-  </a>
+    <a class="users" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/users}">
+        Users
+    </a>
 
-  <span sec:authorize="isAuthenticated()" th:classappend="${activePage == 'users'} ? active">
-   <a class="my-profile"  th:href="@{/user}">My profile</a>
+    <span sec:authorize="isAuthenticated()" th:classappend="${activePage == 'users'} ? active">
+   <a class="my-profile" th:href="@{/user}">My profile</a>
   </span>
 
-  <a class="login" sec:authorize="!isAuthenticated()" th:href="@{/login}">
-    Login
-  </a>
+    <a class="login" sec:authorize="!isAuthenticated()" th:href="@{/login}">
+        Login
+    </a>
 
-  <a class="create-account" sec:authorize="!isAuthenticated()" th:href="@{/user/new}">
-    Create account
-  </a>
+    <a class="create-account" sec:authorize="!isAuthenticated()" th:href="@{/user/new}">
+        Create account
+    </a>
 
-  <form class="logout-form" sec:authorize="isAuthenticated()" th:method="post" th:action="@{/logout}">
-    <button class="float-right">
-      Logout <span sec:authentication="principal.username">Username</span>
-    </button>
-    <div>
-      <a th:href="@{/user}">
-        <img class="image" th:src="@{/user/avatar}" alt="User profile" width="250">
-      </a>
-    </div>
-  </form>
+    <form class="logout-form" sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
+        <button class="float-right">
+            Logout <span sec:authentication="principal.username">Username</span>
+        </button>
+        <div>
+            <a th:href="@{/user}">
+                <img alt="User profile" class="image" th:src="@{/user/avatar}" width="250">
+            </a>
+        </div>
+    </form>
 </header>
 
 </html>

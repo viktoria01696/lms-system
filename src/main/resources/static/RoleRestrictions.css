@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     line-height: 1.6;
     font-family: 'Caveat', cursive;
@@ -6,11 +6,11 @@ body{
 
 *,
 *:before,
-*:after{
+*:after {
     box-sizing: border-box;
 }
 
-.main-theme{
+.main-theme {
     width: 600px;
     height: 436px;
     background: url("../images/error.jpg") center no-repeat;
@@ -21,84 +21,95 @@ body{
     top: 0;
     bottom: 0;
 }
-h1{
-    font-size:50px;
-    color:black;
+
+h1 {
+    font-size: 50px;
+    color: black;
     position: relative;
-    top:50px;
-    left:20px;
+    top: 50px;
+    left: 20px;
 }
+
 .courses,
 .users {
-     position:absolute;
-     top:10px;
-     font-size: 40px;
-     text-decoration: none;
-     color: blue;
+    position: absolute;
+    top: 10px;
+    font-size: 40px;
+    text-decoration: none;
+    color: blue;
 }
-.courses{
-     left:20px;
+
+.courses {
+    left: 20px;
 }
-.users{
-     left:150px;
+
+.users {
+    left: 150px;
 }
-.my-profile{
-     background-color:#4698f1;
-     border: none;
-     border-radius: 5px;
-     cursor: pointer;
-     color: white;
-     width:183px;
-     height:50px;
-     position:absolute;
-     top:30px;
-     right:30px;
-     font-size: 35px;
-     text-decoration: none;
-     text-align:center;
-     z-index:50;
+
+.my-profile {
+    background-color: #4698f1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    width: 183px;
+    height: 50px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 35px;
+    text-decoration: none;
+    text-align: center;
+    z-index: 50;
 }
-.logout-form{
-     position:absolute;
-     margin:0 auto;
-     top:90px;
-     right:30px;
-     text-align: right;
+
+.logout-form {
+    position: absolute;
+    margin: 0 auto;
+    top: 90px;
+    right: 30px;
+    text-align: right;
 }
-.float-right{
-     letter-spacing: 1px;
-     font-size: 35px;
-     border: none;
-     border-radius: 5px;
-     color: white;
-     background-color: #4698f1;
-     outline:none;
-     cursor: pointer;
-     font-family: 'Caveat', cursive;
+
+.float-right {
+    letter-spacing: 1px;
+    font-size: 35px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #4698f1;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
 }
-.image{
-     position: relative;
-     top:10px;
-     border-radius: 10px;
+
+.image {
+    position: relative;
+    top: 10px;
+    border-radius: 10px;
 }
+
 .login,
-.create-account{
-     background-color:#4698f1;
-     border: none;
-     border-radius: 5px;
-     cursor: pointer;
-     color: white;
-     width:200px;
-     height:50px;
-     position:absolute;
-     right:30px;
-     font-size: 35px;
-     text-decoration: none;
-     text-align:center;
+.create-account {
+    background-color: #4698f1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    right: 30px;
+    font-size: 35px;
+    text-decoration: none;
+    text-align: center;
 }
-.login{
-     top:30px;
+
+.login {
+    top: 30px;
 }
-.create-account{
-     top:90px;
+
+.create-account {
+    top: 90px;
 }

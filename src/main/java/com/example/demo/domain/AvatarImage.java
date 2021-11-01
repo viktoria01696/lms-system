@@ -1,99 +1,94 @@
 package com.example.demo.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "avatar_images")
 public class AvatarImage {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column
-  private String contentType;
+    @Column
+    private String contentType;
 
-  @Column
-  private String filename;
+    @Column
+    private String filename;
 
-  @Column
-  private String nativeName;
+    @Column
+    private String nativeName;
 
-  @OneToOne
-  private User user;
+    @OneToOne
+    private User user;
 
-  @OneToOne
-  private Course course;
+    @OneToOne
+    private Course course;
 
-  public AvatarImage(Long id, String contentType, String filename, String nativeName, User user) {
-    this.id = id;
-    this.contentType = contentType;
-    this.filename = filename;
-    this.nativeName = nativeName;
-    this.user = user;
-  }
-  public AvatarImage(Long id, String contentType, String filename, String nativeName, Course course) {
-    this.id = id;
-    this.contentType = contentType;
-    this.filename = filename;
-    this.nativeName = nativeName;
-    this.course = course;
-  }
+    public AvatarImage(Long id, String contentType, String filename, String nativeName, User user) {
+        this.id = id;
+        this.contentType = contentType;
+        this.filename = filename;
+        this.nativeName = nativeName;
+        this.user = user;
+    }
 
-  public AvatarImage() {
-  }
+    public AvatarImage(Long id, String contentType, String filename, String nativeName, Course course) {
+        this.id = id;
+        this.contentType = contentType;
+        this.filename = filename;
+        this.nativeName = nativeName;
+        this.course = course;
+    }
 
-  public Long getId() {
-    return id;
-  }
+    public AvatarImage() {
+    }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public String getContentType() {
-    return contentType;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public void setContentType(String contentType) {
-    this.contentType = contentType;
-  }
+    public String getContentType() {
+        return contentType;
+    }
 
-  public String getFilename() {
-    return filename;
-  }
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
 
-  public void setFilename(String filename) {
-    this.filename = filename;
-  }
+    public String getFilename() {
+        return filename;
+    }
 
-  public User getUser() {
-    return user;
-  }
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 
-  public void setUser(User user) {
-    this.user = user;
-  }
+    public User getUser() {
+        return user;
+    }
 
-  public Course getCourse() {
-    return course;
-  }
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-  public void setCourse(Course course) {
-    this.course = course;
-  }
+    public Course getCourse() {
+        return course;
+    }
 
-  public String getNativeName() {
-    return nativeName;
-  }
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 
-  public void setNativeName(String nativeName) {
-    this.nativeName = nativeName;
-  }
+    public String getNativeName() {
+        return nativeName;
+    }
+
+    public void setNativeName(String nativeName) {
+        this.nativeName = nativeName;
+    }
 }

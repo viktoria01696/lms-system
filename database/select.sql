@@ -1,21 +1,21 @@
 -- filter courses by tag
-SELECT * 
-FROM courses 
-WHERE  id in (SELECT course_id 
-			  FROM courses_tags 
-			  WHERE tag_id in (SELECT id 
-							   FROM tags 
-							   WHERE name ILIKE '%java%'));
-							   
+SELECT *
+FROM courses
+WHERE id in (SELECT course_id
+             FROM courses_tags
+             WHERE tag_id in (SELECT id
+                              FROM tags
+                              WHERE name ILIKE '%java%'));
+
 -- filter courses by category
-SELECT * 
-FROM courses 
-WHERE  id in (SELECT course_id 
-			  FROM courses_categories 
-			  WHERE category_id in (SELECT id 
-									FROM categories 
-									WHERE title ILIKE '%java%'));
-									
+SELECT *
+FROM courses
+WHERE id in (SELECT course_id
+             FROM courses_categories
+             WHERE category_id in (SELECT id
+                                   FROM categories
+                                   WHERE title ILIKE '%java%'));
+
 --sort courses by rating
 SELECT title, author, description, rating
 FROM courses
@@ -40,7 +40,7 @@ WHERE name ILIKE 'Ива%'
 SELECT name
 FROM tags
 WHERE id in (SELECT tag_id
-			 FROM courses_tags)
+             FROM courses_tags)
 			 
 
 

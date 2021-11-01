@@ -9,21 +9,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class LessonConverter {
 
-  private final CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
 
-  @Autowired
-  public LessonConverter(CourseRepository courseRepository){
-    this.courseRepository = courseRepository;
-  }
+    @Autowired
+    public LessonConverter(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
+    }
 
-  public Lesson createLessonFromLessonDto(LessonDto lessonDto){
-    return new Lesson(lessonDto.getId(), lessonDto.getTitle(), lessonDto.getText(),
-        courseRepository.getById(lessonDto.getCourseId()));
-  }
+    public Lesson createLessonFromLessonDto(LessonDto lessonDto) {
+        return new Lesson(lessonDto.getId(), lessonDto.getTitle(), lessonDto.getText(),
+                courseRepository.getById(lessonDto.getCourseId()));
+    }
 
-  public LessonDto createLessonDtoFromLesson(Lesson lesson){
-    return new LessonDto(lesson.getId(), lesson.getTitle(), lesson.getText(),
-        lesson.getCourse().getId());
-  }
+    public LessonDto createLessonDtoFromLesson(Lesson lesson) {
+        return new LessonDto(lesson.getId(), lesson.getTitle(), lesson.getText(),
+                lesson.getCourse().getId());
+    }
 
 }

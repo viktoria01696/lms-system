@@ -1,4 +1,4 @@
-body{
+body {
     background-image: url("../images/main-theme.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -11,15 +11,16 @@ body{
     font-family: 'Caveat', cursive;
 }
 
-h1{
+h1 {
     font-size: 100px;
-    color:black;
+    color: black;
     padding: 0 0 0 20px;
     position: relative;
     margin: 0 auto;
-    left:200px;
+    left: 200px;
 }
-.main-part{
+
+.main-part {
     width: 1200px;
     height: 100%;
     margin: auto;
@@ -29,35 +30,45 @@ h1{
     right: 0;
     z-index: 0;
 }
-.avatar-form{
-    position:relative;
+
+.avatar-form {
+    position: relative;
     margin-bottom: 10px;
     margin-left: 0px;
 }
-.fl_upld{width:300px;}
-#fl_inp{display:none;}
-.fl_upld label{
-    position:absolute;
-    left:320px;
+
+.fl_upld {
+    width: 300px;
+}
+
+#fl_inp {
+    display: none;
+}
+
+.fl_upld label {
+    position: absolute;
+    left: 320px;
     top: 0px;
-    cursor:pointer;
-    background:#4698f1;
-    border-radius:5px;
-    padding:0px 10px;
-    color:white;
+    cursor: pointer;
+    background: #4698f1;
+    border-radius: 5px;
+    padding: 0px 10px;
+    color: white;
     text-align: center;
     font-size: 30px;
 }
-#fl_nm{
-    position:absolute;
+
+#fl_nm {
+    position: absolute;
     top: 0px;
     left: 550px;
     letter-spacing: 1px;
     font-size: 30px;
     width: 600px;
-    color: #5e83ab;}
+    color: #5e83ab;
+}
 
-.avatar-button{
+.avatar-button {
     display: inline-block;
     background-color: #4698f1;
     letter-spacing: 1px;
@@ -69,20 +80,22 @@ h1{
     border: none;
     border-radius: 5px;
     color: white;
-    outline:none;
+    outline: none;
     cursor: pointer;
     font-family: 'Caveat', cursive;
 }
-.avatar-button-help{
-    position:absolute;
-    top:70px;
-    left:320px;
+
+.avatar-button-help {
+    position: absolute;
+    top: 70px;
+    left: 320px;
 }
+
 .form_input-name,
-.form_input-author{
+.form_input-author {
     font-family: 'Caveat', cursive;
     letter-spacing: 1px;
-    font-size: 30px; 
+    font-size: 30px;
     color: black;
     width: 100%;
     padding: 0px 0 10px 0;
@@ -91,36 +104,41 @@ h1{
     background-color: transparent;
     outline: none;
 }
-.form_input-name{
+
+.form_input-name {
     padding: 0px 0 10px 0;
 }
+
 .form_button,
-.form_button_delete{
+.form_button_delete {
     letter-spacing: 1px;
-    font-size: 23px; 
+    font-size: 23px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     color: white;
-    outline:none;
+    outline: none;
     cursor: pointer;
     font-family: 'Caveat', cursive;
-    right:100px;
+    right: 100px;
 }
-.form_button{
+
+.form_button {
     background-color: #4698f1;
     letter-spacing: 1px;
     font-size: 30px;
-    position:relative;
+    position: relative;
     top: 20px;
     left: 1000px;
-    z-index:100;
+    z-index: 100;
 }
-.form_button_delete{
+
+.form_button_delete {
     background-color: #0071f0;
 }
+
 label,
-h4{
+h4 {
     font-family: 'Caveat', cursive;
     letter-spacing: 1px;
     font-size: 35px;
@@ -129,150 +147,173 @@ h4{
     border: none;
 
 }
-.label1{
-    position:relative;
-    top:50px;
-    left:-230px;
+
+.label1 {
+    position: relative;
+    top: 50px;
+    left: -230px;
 }
-.label2{
-    position:relative;
-    top:50px;
-    left:-110px;
+
+.label2 {
+    position: relative;
+    top: 50px;
+    left: -110px;
 }
-.label3{
-    position:absolute;
+
+.label3 {
+    position: absolute;
     top: -10px;
     left: -160px;
 }
-h4{
-    position:absolute;
-    top:-30px;
-    left:630px;
+
+h4 {
+    position: absolute;
+    top: -30px;
+    left: 630px;
     width: 600px;
 }
+
 .validation-error-title,
-.validation-error-author{
+.validation-error-author {
     color: red;
-    font-size:30px;
+    font-size: 30px;
 }
-.validation-error-title{
-    top:340px;
+
+.validation-error-title {
+    top: 340px;
 }
-.validation-error-author{
-    top:400px;
+
+.validation-error-author {
+    top: 400px;
 }
-.lesson-user{
-    position:relative;
-    margin-left:50px;
-    padding-bottom:20px;
+
+.lesson-user {
+    position: relative;
+    margin-left: 50px;
+    padding-bottom: 20px;
 }
 
 .user-table,
-.lesson-table{
-     width: 1100px;
-     border-collapse: collapse;
-     border: 2px solid white;
-     font-size:30px;
-     color:black;
-     background: #CCCCFF;
-     opacity: 0.7;
-     font-weight:bold;
-     text-align: center;
+.lesson-table {
+    width: 1100px;
+    border-collapse: collapse;
+    border: 2px solid white;
+    font-size: 30px;
+    color: black;
+    background: #CCCCFF;
+    opacity: 0.7;
+    font-weight: bold;
+    text-align: center;
 }
-h2,h3{
+
+h2, h3 {
     font-family: 'Caveat', cursive;
     letter-spacing: 1px;
     font-size: 35px;
     color: black;
     margin: 0 auto;
     text-align: center;
-    padding-bottom:10px;
-    padding-top:25px;
+    padding-bottom: 10px;
+    padding-top: 25px;
 }
+
 td {
     border: 2px white solid;
     padding: 0.4em;
 }
-tr{
+
+tr {
     height: 70px;
 }
+
 .new-lesson,
-.new-user{
+.new-user {
     font-size: 35px;
 }
+
 .courses,
 .users {
-     position:absolute;
-     top:10px;
-     font-size: 40px;
-     text-decoration: none;
-     color: blue;
+    position: absolute;
+    top: 10px;
+    font-size: 40px;
+    text-decoration: none;
+    color: blue;
 }
-.courses{
-     left:20px;
+
+.courses {
+    left: 20px;
 }
-.users{
-     left:150px;
+
+.users {
+    left: 150px;
 }
-.my-profile{
-     background-color:#4698f1;
-     border: none;
-     border-radius: 5px;
-     cursor: pointer;
-     color: white;
-     width:183px;
-     height:50px;
-     position:absolute;
-     top:30px;
-     right:30px;
-     font-size: 35px;
-     text-decoration: none;
-     text-align:center;
+
+.my-profile {
+    background-color: #4698f1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    width: 183px;
+    height: 50px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 35px;
+    text-decoration: none;
+    text-align: center;
 }
-.logout-form{
-     position:absolute;
-     margin:0 auto;
-     top:90px;
-     right:30px;
-     text-align: right;
+
+.logout-form {
+    position: absolute;
+    margin: 0 auto;
+    top: 90px;
+    right: 30px;
+    text-align: right;
 }
-.float-right{
-     letter-spacing: 1px;
-     font-size: 35px;
-     border: none;
-     border-radius: 5px;
-     color: white;
-     background-color: #4698f1;
-     outline:none;
-     cursor: pointer;
-     font-family: 'Caveat', cursive;
+
+.float-right {
+    letter-spacing: 1px;
+    font-size: 35px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #4698f1;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
 }
-.image{
-     position: relative;
-     top:10px;
-     border-radius: 10px;
+
+.image {
+    position: relative;
+    top: 10px;
+    border-radius: 10px;
 }
-.course-image{
-     border-radius: 20px;
+
+.course-image {
+    border-radius: 20px;
 }
+
 .login,
-.create-account{
-     background-color:#4698f1;
-     border: none;
-     border-radius: 5px;
-     cursor: pointer;
-     color: white;
-     width:200px;
-     height:50px;
-     position:absolute;
-     right:30px;
-     font-size: 35px;
-     text-decoration: none;
-     text-align:center;
+.create-account {
+    background-color: #4698f1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    right: 30px;
+    font-size: 35px;
+    text-decoration: none;
+    text-align: center;
 }
-.login{
-     top:30px;
+
+.login {
+    top: 30px;
 }
-.create-account{
-     top:90px;
+
+.create-account {
+    top: 90px;
 }

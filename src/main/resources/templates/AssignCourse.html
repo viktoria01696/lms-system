@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" th:href="@{/AssignCourse.css}">
-  <title>assign course</title>
-  <link
-      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Staatliches&family=Teko:wght@500&display=swap"
-      rel="stylesheet">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/AssignCourse.css}">
+    <title>assign course</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Staatliches&family=Teko:wght@500&display=swap"
+            rel="stylesheet">
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
 
 <div class="main-theme">
-  <div class="main-part">
-    <h1> Назначить на курс </h1>
-    <form th:method="post" th:action="@{/course/{courseId}/assign(courseId = ${courseId})}">
-      <div class="form_group">
-        <label for="userId">Пользователь:</label>
-        <select id="userId" name="userId">
-        <option th:each="user : ${users}"
-                  th:value="${user.id}"
-                  th:text="${user.username}">Username</option>
-        <option th:if="${users.empty}">Нет доступных пользователей</option>
-        </select>
-      </div>
-      <div>
-        <button class="form_button" type="submit">Assign</button>
-      </div>
-    </form>
-  </div>
+    <div class="main-part">
+        <h1> Назначить на курс </h1>
+        <form th:action="@{/course/{courseId}/assign(courseId = ${courseId})}" th:method="post">
+            <div class="form_group">
+                <label for="userId">Пользователь:</label>
+                <select id="userId" name="userId">
+                    <option th:each="user : ${users}"
+                            th:text="${user.username}"
+                            th:value="${user.id}">Username
+                    </option>
+                    <option th:if="${users.empty}">Нет доступных пользователей</option>
+                </select>
+            </div>
+            <div>
+                <button class="form_button" type="submit">Assign</button>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>
